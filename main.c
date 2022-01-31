@@ -1,16 +1,13 @@
 #include <stdio.h>
-/* Muista esitell‰ paivita-funktio otsaketiedostossa tetris.h */
 #include "tetris.h"
 
-/* Alla m‰‰ritet‰‰n 2-ulotteinen 20x10-kokoinen staattinen merkkitaulukko,
-   jossa t‰ynn‰ olevat ruudut on merkitty merkill‰ 'x'. Kukin 10-alkioinen
-   alitaulukko alustetaan merkkijonolla (jonka loppumerkki leikkautuu pois). */
-char ruudukko[20][10] = {"          ",  /* Rivi 0: ylin rivi.                */
-                         "  x   x   ",  /* Rivi 1: toiseksi ylin rivi.       */
-                         " xx   xxx ",  /* ...ja niin edelleen...            */
+/* 20x10 static char array, where full squares are marked with 'x'. */
+char grid[20][10] = {"          ",  /* First row.                */
+                         "  x   x   ",  /* Second row.       */
+                         " xx   xxx ",  
                          "xxx xxxxxx",
-                         "xxxxxxxxxx",  /* Rivi 4: t‰ynn‰.                   */
-                         "xxxxxxxxxx",  /* Rivi 5: t‰ynn‰.                   */
+                         "xxxxxxxxxx",  /* Full row. */
+                         "xxxxxxxxxx",  
                          "xxxxxx xxx",
                          "xxxxxxx xx",
                          "x xxxxxxxx",
@@ -23,16 +20,16 @@ char ruudukko[20][10] = {"          ",  /* Rivi 0: ylin rivi.                */
                          " xxxxxxxxx",
                          "xxx xxx xx",
                          "x xxxx xxx",
-                         "xxxxx xxxx",  /* Rivi 18: toiseksi alin rivi.      */
-                         "xxxxxxxx x"}; /* Rivi 19: alin rivi.               */
+                         "xxxxx xxxx",  
+                         "xxxxxxxx x"}; /* Last row. */
 
 int main(void)
 {
   int i = 0;
-  paivita(ruudukko);       /* Poistetaan tyhj‰t rivit. */
-  for(i = 0; i < 20; ++i)  /* Tulostetaa ruudukko.     */
+  update(grid);       
+  for(i = 0; i < 20; ++i)  
   {
-    printf("%.10s\n", ruudukko[i]); /* Tulostetaan 1 rivi eli 10 merkki‰. */
+    printf("%.10s\n", grid[i]); 
   }
   return 0;
 }
